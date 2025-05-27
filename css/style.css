@@ -429,3 +429,46 @@ transform: translateY(0);
 .hero-header h1 {
   margin: 0;
 }
+
+.about-me {
+  background: #fff;
+  padding: 80px 0 40px 0;
+}
+.about-flex {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.about-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow-lg);
+  background: #eee;
+}
+.about-text {
+  flex: 1;
+}
+.about-links {
+  margin-top: 16px;
+}
+.about-link {
+  margin-right: 24px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+.about-link .icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+@media (max-width: 700px) {
+  .about-flex { flex-direction: column; gap: 24px; text-align: center; }
+  .about-photo { margin: 0 auto; }
+}
