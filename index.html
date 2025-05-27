@@ -3,25 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ConsultPlug: The One-Stop Shop For Innovative, AI-Centric Small Business Solutions</title>
+        <title>Spartanburg Solutions: The One-Stop Shop For Innovative, AI-Centric Small Business Solutions</title>
  <link rel="stylesheet" href="css/style.css">
     </head>
 
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-header"> 
-            <img src="spartanburg-logo.png" class="logo-img">
-            <h1>“Spartanburg Solutions. Startup Speed.” </h1>
-            <p></p>
-        </div>
+      <div class="container" style="display: flex; align-items: center; gap: 200px;">
+        <img src="spartanburg-logo.png.png" alt="Spartanburg Logo" class="logo-img" style="width:240px; height:auto; border-radius:32px;">
+        <h1 style="margin:0;">Spartanburg Solutions.<br>Startup Speed.</h1>
+      </div>
     </section>
+
 
     <!-- Features Section -->
     <section class="features-section">
         <div class="container">
+    <p class= "section-subtitle reveal">Completely. 100%. Free. Created by a college student who wants to make a positive impact on his community.</p>
+            
+        <div class="container">
             <h2 class="section-title reveal">Why You'll Love This</h2>
-            <p class="section-subtitle reveal">Our mission: simplify your day so you can focus on what matters.
+            <p class="section-subtitle reveal">My mission: simplify your day so you can focus on what matters.
 
 </p>
 
@@ -66,29 +69,29 @@
                 </div>
 
                 <!-- Option 1: Custom form that submits to Google Forms -->
-                <form id="contact-form" action="YOUR_GOOGLE_FORM_ACTION_URL" method="POST">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="entry.XXXXXX" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" name="entry.XXXXXX" required>
-                    </div>
-                    <div class= "form-group"><label for ="challenge">What is your Business' Name?</label> <input type="text" id="business" name="entry.XXXXXX" required> </div>
-
-                    <div class="form-group">
-                        <label for="challenge">What's your biggest challenge right now?</label>
-                        <textarea id="challenge" name="entry.XXXXXX"
-                            placeholder="Example: I spend 2 hours a day on email..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">
-                        Let’s Build It→
-                    </button>
+                <!-- modify this form HTML and place wherever you want your form -->
+                <form id="contact-form" action="https://formspree.io/f/myzwqqzo" method="POST">
+                  <div class="form-group">
+                    <label for="name">What is Your Name?</label>
+                    <input type="text" id="name" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">What is Your Email?</label>
+                    <input type="email" id="email" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="business">What is Your Business' Name?</label>
+                    <input type="text" id="business" name="business" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="problem">What is Your Biggest Problem?</label>
+                    <input type="text" id="problem" name="problem" required>
+                  </div>
+                  <button type="submit" class="submit-btn">Submit</button>
                 </form>
 
+                <div id="form-response" style="margin-top:20px;"></div>
+                
                 <!-- Option 2: Embedded Google Form (uncomment to use) -->
                 <!-- 
                 <iframe src="YOUR_GOOGLE_FORM_EMBED_URL" 
@@ -146,11 +149,22 @@
 
                 // Success - show thank you message
                 form.innerHTML = `
-                    <div style="text-align: center; padding: 40px 0;">
-                        <div style="font-size: 48px; margin-bottom: 20px;">🎉</div>
-                        <h3 style="font-size: 24px; margin-bottom: 10px;">You're on the list!</h3>
-                        <p style="color: var(--gray);">We'll reach out soon with your early access.</p>
-                    </div>
+  <div style="text-align: center; padding: 40px 0;">
+    <div style="font-size: 48px; margin-bottom: 20px;">🎉</div>
+    <h3 style="font-size: 24px; margin-bottom: 10px;">Thank you! Your message has been received.</h3>
+    <a href="/" class="back-home-btn" style="
+      display: inline-block;
+      margin-top: 20px;
+      background: #2563eb;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    ">← Back to Home</a>
+  </div>
+
                 `;
             } catch (error) {
                 // Error handling
@@ -166,9 +180,66 @@
             const hero = document.querySelector('.hero');
             hero.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
+
+
     </script>
 
-                    
+                    <script>
+                        const form = document.getElementById('contact-form');
+                        const response = document.getElementById('form-response');
+
+                        form.addEventListener('submit', async function(event) {
+                          event.preventDefault();
+
+                          // Create FormData from the form
+                          const formData = new FormData(form);
+
+                          // Send POST request to Formspree
+                          const res = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 'Accept': 'application/json' }
+                          });
+
+                          if (res.ok) {
+                            response.textContent = "Thank you! Your message has been received.";
+                            form.reset(); // Clears the form fields
+                            setTimeout(() => {
+                              response.textContent = ""; // Remove thank you after 3 seconds (optional)
+                            }, 3000);
+                          } else {
+                            response.textContent = "Oops! Something went wrong. Please try again.";
+                          }
+                        });
+                        </script>
+
+
+                    <!-- About Me Section -->
+                    <section class="about-me">
+                      <div class="container about-flex">
+                        <img src="thumbnail_Ethan Babb.jpg" alt="Your Name" class="about-photo">
+                        <div class="about-text">
+                          <h2>About Me</h2>
+                          <ul>
+                            <li><strong>Age:</strong> 20</li>
+                            <li><strong>From:</strong> Spartanburg, SC</li>
+                            <li><strong>Education:</strong> Dorman High School 23', Washington and Lee University 27'</li>
+                          </ul>
+                          <p>
+                          Hi, I’m Ethan Babb — a 20-year-old entrepreneur and W&L student from Spartanburg. After launching a startup in Silicon Valley and pitching my AI app to investors, I'm home for the summer to help local businesses save time with custom web tools. I build practical, AI-powered solution apps that automate repetitive tasks and streamline operations, all with one goal: to help small businesses do more with less.
+                          </p>
+                          <div class="about-links">
+                            <a href="mailto:ebabb@mail.wlu.edu" class="about-link">
+                              <img src="iconmonstr-email-1-240.png.png" alt="Email" class="icon"> Email Me
+                            </a>
+                            <a href="https://www.linkedin.com/in/ethan-babb-b05405283" class="about-link" target="_blank">
+                              <img src="iconmonstr-linkedin-3-240.png.png" alt="LinkedIn" class="icon"> LinkedIn
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
 </body>
 
 </html>
